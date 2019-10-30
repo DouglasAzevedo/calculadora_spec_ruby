@@ -76,7 +76,39 @@ RSpec.describe Calculadora, type: :servicos do
       calculadora = Calculadora.new(-2.0, -2.0)
       expect( calculadora.multiplicar ).to eq(4)
     end
+
+    it 'o numero 0 e 5, o resultado deve ser 0' do
+      calculadora = Calculadora.new(0.0, 5.0)
+      expect( calculadora.multiplicar ).to eq(0)
+    end
+ 
+    it 'o numero 5 e 0, o resultado deve ser 0' do
+      calculadora = Calculadora.new(5.0, 0.0)
+      expect( calculadora.multiplicar ).to eq(0)
+    end
+
+    it 'o numero 6 e 0.5, o resultado deve ser 3' do
+      calculadora = Calculadora.new(6.0, 0.5)
+      expect( calculadora.multiplicar ).to eq(3)
+    end
   end
 
+  describe 'ao multiplicar a divisao' do
+    it '5 e 2, e dividir o resultado por 5' do
+      calculadora = Calculadora.new(20.0, 2.0)
+      R = calculadora.dividir;
+      resultado = Calculadora.new(R, 5.0)
+      expect( resultado.multiplicar ).to eq(50)
+    end
+  end
+
+  describe 'dividir a multiplicacao' do
+    it '10 e 10, e dividir por 5' do
+      calculadora = Calculadora.new(10.0, 10.0)
+      mult = calculadora.multiplicar
+      resultado = Calculadora.new(mult, 5.0)
+      expect( resultado.dividir ).to eq(20)
+    end
+  end
 
 end
